@@ -13,26 +13,41 @@ function writePassword() {
     passwordText.value = password;
 }
 
-
+// Clicking "Generate Password" on the page runs this function and returns a unique password.
 function generatePassword() {
+    // Character type assets. 
     const lowerAssets = "abcdefghijklmnopqrstuvwxyz";
     const upperAssets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    // const upperAssets = lowerAssets.toUpperCase()
     const numberAssets = "0123456789";
     const specialAssets = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
+    // User is prompted to select character types.
     var includeLowerCase = window.confirm("Do you want to include lower case letters?")
     var includeUpperCase = window.confirm("Do you want to include upper case letters?")
     var includeNumbers = window.confirm("Do you want to include numbers?")
     var includeSpecial = window.confirm("Do you want to include special characters?")
+    // If no character types are selected user will be alerted and prompted to select character types again.
+    if (!includeLowerCase && !includeUpperCase && !includeNumbers && !includeSpecial) {
+        window.alert("You must select at least one character type!")
+        includeLowerCase = window.confirm("Do you want to include lower case letters?")
+        includeUpperCase = window.confirm("Do you want to include upper case letters?")
+        includeNumbers = window.confirm("Do you want to include numbers?")
+        includeSpecial = window.confirm("Do you want to include special characters?")
+    }
+    // User is prompted to select password length.
     var passwordLength = window.prompt("Select password length. Length must be between 8 and 128 characters.")
+    // If length entry is not a number or is outside of range user will be alerted and prompted to enter length again.
+    if (isNaN(passwordLength)) {
+        window.alert("Entry must be a number!")
+        passwordLength = window.prompt("Length must be a number between 8 and 128 characters.")
+    }
+    if (passwordLength<8 || passwordLength>128) {
+        window.alert("Length must be between 8 and 128!")
+        passwordLength = window.prompt("Length must be a number between 8 and 128 characters.")
+    }
 
     // Converts var passwordLength from a string to a number
     passwordLength = +passwordLength;
-
-    if (isNaN (passwordLength)) {
-    passwordLength = window.prompt("Length must be a NUMBER between 8 and 128.")
-    }
 
     // Add character assets to one large string of user selected criteria.
     var selectedChars = ""
@@ -49,13 +64,13 @@ function generatePassword() {
         selectedChars = selectedChars.concat(specialAssets)
     }
 
-    //Generate password from user selected characters and length.
+    //Generates password from user selected characters and length.
     var passwordOutput = ""
     for (var i=0; i<passwordLength; i++) {
         passwordOutput = passwordOutput.concat(selectedChars[Math.floor(Math.random()*selectedChars.length)])
     }
 
-// DEBUGGING
+    // DEBUGGING
     console.log("includeLowerCase = " + includeLowerCase)
     console.log("includeUpperCase = " + includeUpperCase)
     console.log("includeNumbers = " + includeNumbers)
@@ -65,17 +80,5 @@ function generatePassword() {
     console.log("passwordOutput = " + passwordOutput)
 
     return passwordOutput;
-// End function generatePassword()
+// End function generatePassword
 }
-
-
-// -----  PSEUDOCODE:   ------------------------------------- 
-// Create 4 booleans: includeLowerCase, includeUpperCase, includeNumbers, includeSpecial
-// Create number var passwordLength
-// Booleans and passwordLength are defined by user in prompts for password criteria
-
-// Create 4 strings: lowerAssets, upperAssets, numberAssets, specialAssets)
-// Create var selectedChars. concatinate user selected asset strings into selectedChars
-// Create empty string for var passwordOutput
-// Create for loop to concat random chars from selectedChars string to passwordOutput until it reaches passwordLength.
-// return generated password "passwordOutput" on web page.
