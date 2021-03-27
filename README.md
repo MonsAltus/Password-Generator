@@ -1,6 +1,5 @@
 # Password-Generator
-Project to create unique passwords.
-
+A project to create unique passwords using JavaScript.
 
 ### Description:
 This page is designed to generate unique passwords in accordance with the following user selected criteria:
@@ -17,8 +16,6 @@ This is my first experience in creating what I felt was decent pseudocode before
 - Create empty string for var passwordOutput
 - Create for loop to concat random chars from selectedChars to passwordOutput until it reaches passwordLength.
 - return generated password "passwordOutput" on web page.
-
-
 
 ### Links:
 [Website preview](./images/preview.png)<br>

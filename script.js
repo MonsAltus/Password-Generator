@@ -35,21 +35,18 @@ function generatePassword() {
         includeSpecial = window.confirm("Do you want to include special characters?")
     }
     // User is prompted to select password length.
-    var passwordLength = window.prompt("Select password length. Length must be between 8 and 128 characters.")
+    var passwordLength = Number(window.prompt("Select password length. Length must be between 8 and 128 characters."))
     // If length entry is not a number or is outside of range user will be alerted and prompted to enter length again.
     if (isNaN(passwordLength)) {
         window.alert("Entry must be a number!")
-        passwordLength = window.prompt("Length must be a number between 8 and 128 characters.")
+        passwordLength = Number(window.prompt("Length must be a number between 8 and 128 characters."))
     }
     if (passwordLength<8 || passwordLength>128) {
         window.alert("Length must be between 8 and 128!")
-        passwordLength = window.prompt("Length must be a number between 8 and 128 characters.")
+        passwordLength = Number(window.prompt("Length must be a number between 8 and 128 characters."))
     }
 
-    // Converts var passwordLength from a string to a number
-    passwordLength = +passwordLength;
-
-    // Add character assets to one large string of user selected criteria.
+    // Add user selecter character types to one large string.
     var selectedChars = ""
     if (includeLowerCase === true) {
         selectedChars = selectedChars.concat(lowerAssets)
@@ -75,7 +72,7 @@ function generatePassword() {
     console.log("includeUpperCase = " + includeUpperCase)
     console.log("includeNumbers = " + includeNumbers)
     console.log("includeSpecial = " + includeSpecial)
-    console.log("passwordLength type and value= " + typeof passwordLength + passwordLength)
+    console.log("passwordLength type and value = " + typeof passwordLength + passwordLength)
     console.log("selectedChars = " + selectedChars)
     console.log("passwordOutput = " + passwordOutput)
 
