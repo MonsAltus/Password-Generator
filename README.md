@@ -27,3 +27,4 @@ This is my first experience in creating what I felt was decent pseudocode before
 #### script.js:
 - Added if statments to insure password length is a number within acceptable ranges, and at least one character catagory has been selected.
 - Cleaned up spacing, indentation, and comments.
+- Changed if statements on input checks to while statements.

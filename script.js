@@ -27,7 +27,7 @@ function generatePassword() {
     var includeNumbers = window.confirm("Do you want to include numbers?")
     var includeSpecial = window.confirm("Do you want to include special characters?")
     // If no character types are selected user will be alerted and prompted to select character types again.
-    if (!includeLowerCase && !includeUpperCase && !includeNumbers && !includeSpecial) {
+    while (!includeLowerCase && !includeUpperCase && !includeNumbers && !includeSpecial) {
         window.alert("You must select at least one character type!")
         includeLowerCase = window.confirm("Do you want to include lower case letters?")
         includeUpperCase = window.confirm("Do you want to include upper case letters?")
@@ -37,11 +37,11 @@ function generatePassword() {
     // User is prompted to select password length.
     var passwordLength = Number(window.prompt("Select password length. Length must be between 8 and 128 characters."))
     // If length entry is not a number or is outside of range user will be alerted and prompted to enter length again.
-    if (isNaN(passwordLength)) {
+    while (isNaN(passwordLength)) {
         window.alert("Entry must be a number!")
         passwordLength = Number(window.prompt("Length must be a number between 8 and 128 characters."))
     }
-    if (passwordLength<8 || passwordLength>128) {
+    while (passwordLength<8 || passwordLength>128) {
         window.alert("Length must be between 8 and 128!")
         passwordLength = Number(window.prompt("Length must be a number between 8 and 128 characters."))
     }
