@@ -3,7 +3,7 @@ Project to create unique passwords.
 
 
 ### Description:
-This page is a designed to generate unique passwords on command in accordance with the following user selected criteria:
+This page is designed to generate unique passwords in accordance with the following user selected criteria:
 - Passwords can contain lower case letters, upper case letters, numbers, and/or special characters.
 - Passwords can be any length between 8 and 128 characters.
 
